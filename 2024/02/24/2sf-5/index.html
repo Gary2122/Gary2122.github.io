@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>算法知识5-递归算法 - Garrison&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Garrison&#039;s Blog"><meta name="msapplication-TileImage" content="/img/gg.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Garrison&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="在二叉树基础上理解递归算法"><meta property="og:type" content="blog"><meta property="og:title" content="算法知识5-递归算法"><meta property="og:url" content="http://example.com/2024/02/24/2sf-5/"><meta property="og:site_name" content="Garrison&#039;s Blog"><meta property="og:description" content="在二叉树基础上理解递归算法"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/img/2_sf/DM_20240226114342_001.png"><meta property="article:published_time" content="2024-02-24T01:00:00.000Z"><meta property="article:modified_time" content="2024-02-26T03:55:19.860Z"><meta property="article:author" content="Garrison"><meta property="article:tag" content="算法"><meta property="article:tag" content="递归"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/img/2_sf/DM_20240226114342_001.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2024/02/24/2sf-5/"},"headline":"算法知识5-递归算法","image":["http://example.com/img/2_sf/DM_20240226114342_001.png"],"datePublished":"2024-02-24T01:00:00.000Z","dateModified":"2024-02-26T03:55:19.860Z","author":{"@type":"Person","name":"Garrison"},"publisher":{"@type":"Organization","name":"Garrison's Blog","logo":{"@type":"ImageObject","url":"http://example.com/img/G.svg"}},"description":"在二叉树基础上理解递归算法"}</script><link rel="canonical" href="http://example.com/2024/02/24/2sf-5/"><link rel="icon" href="/img/gg.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/kimbie-dark.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/G.svg" alt="Garrison&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">档案</a><a class="navbar-item" href="/categories">类别</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">个人简介</a></div><div class="navbar-end"><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/img/2_sf/DM_20240226114342_001.png" alt="算法知识5-递归算法"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-02-24T01:00:00.000Z" title="2024/2/24 09:00:00">2024-02-24</time>发表</span><span class="level-item"><time dateTime="2024-02-26T03:55:19.860Z" title="2024/2/26 11:55:19">2024-02-26</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div></div><h1 class="title is-3 is-size-4-mobile">算法知识5-递归算法</h1><div class="content"><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><blockquote>
+<p>根据上述二叉树的知识，对递归知识能有更好的理解。</p>
+</blockquote>
+<article class="message is-primary is-medium">
+        <div class="message-header"><p>什么是递归？</p>
+</div>
+        <div class="message-body">
+            <p>递归递归，一个是“递”，一个是“归”。</p>
+
+        </div>
+    </article>
+
+<article class="message is-default is-default">
+        
+        <div class="message-body">
+            <p>举个从小就听过的例子：</p>
+<p>从前有座山，山中有座庙，庙里有个老和尚，老和尚在给小和尚讲故事：“ 从前有座山，山中有座庙，庙里有个老和尚，老和尚在给小和尚讲故事：“ 从前有座山，山中有座庙，庙里有个老和尚，老和尚在给小和尚讲故事：“ 从前有座山，山中有座庙，庙里有个老和尚，老和尚在给小和尚讲故事：“太困了不讲了”，于是都回去睡觉了。”于是都回去睡觉了。”于是都回去睡觉了。”于是都回去睡觉了。</p>
+
+        </div>
+    </article>
+
+<p>​ 在讲故事的过程中，可以看成一个<strong>递</strong>的过程，在“太困了不讲了”可以看成一个递的边界，接下来执行“归”的过程。所以我理解的递归无非是在边界条件前不断执行“递”的过程，在达到边界值后，执行“归”的过程。</p>
+<p>​ 递归的基本思想是某个函数直接或者间接地调用自身，这样原问题的求解就转换为了许多性质相同但是规模更小的子问题。求解时只需要关注如何把原问题划分成符合条件的子问题，而不需要过分关注这个子问题是如何被解决的。</p>
+<br>
+
+<h3 id="递归的思想"><a href="#递归的思想" class="headerlink" title="递归的思想"></a>递归的思想</h3><p><strong>递归有三大要素</strong></p>
+<p><strong>第一要素：明确你这个函数想要干什么</strong></p>
+<p>对于递归，我觉得很重要的一个事就是，<strong>这个函数的功能是什么</strong>，他要完成什么样的一件事，而这个，是完全由你自己来定义的。也就是说，我们先不管函数里面的代码什么，而是要先明白，你这个函数是要用来干什么。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 算 n 的阶乘(假设n不为0)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">f</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p><strong>第二要素：寻找递归结束条件</strong></p>
+<p>所谓递归，就是会在函数内部代码中，调用这个函数本身，所以，我们必须要找出递归的结束条件，不然的话，会一直调用自己，进入无底洞。也就是说，我们需要找出当参数为啥时，递归结束，之后直接把结果返回，请注意，这个时候我们必须能根据这个参数的值，能够直接知道函数的结果是什么。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 算 n 的阶乘(假设n不为0)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">f</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p><strong>第三要素：找出函数的等价关系式</strong></p>
+<p>第三要素就是，我们要不断缩小参数的范围，缩小之后，我们可以通过一些辅助的变量或者操作，使原函数的结果不变。</p>
+<p>例如，f(n) 这个范围比较大，我们可以让 f(n) &#x3D; n * f(n-1)。这样，范围就由 n 变成了 n-1 了，范围变小了，并且为了原函数 f(n) 不变，我们需要让 f(n-1) 乘以 n。</p>
+<p>说白了，就是要找到原函数的一个等价关系式，f(n) 的等价关系式为 n * f(n-1)，即</p>
+<p>f(n) &#x3D; n * f(n-1)。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">f</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> n * <span class="built_in">f</span>(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">f</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> s = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)&#123;</span><br><span class="line">		s *= i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/02/24/2sf-5/2021082514323886.png" alt="2021082514323886"></p>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E7%AE%97%E6%B3%95/">算法</a><a class="link-muted mr-2" rel="tag" href="/tags/%E9%80%92%E5%BD%92/">递归</a></div><div class="bdsharebuttonbox"><a class="bds_more" href="#" data-cmd="more"></a><a class="bds_qzone" href="#" data-cmd="qzone" title="分享到QQ空间"></a><a class="bds_tsina" href="#" data-cmd="tsina" title="分享到新浪微博"></a><a class="bds_tqq" href="#" data-cmd="tqq" title="分享到腾讯微博"></a><a class="bds_renren" href="#" data-cmd="renren" title="分享到人人网"></a><a class="bds_weixin" href="#" data-cmd="weixin" title="分享到微信"></a></div><script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/02/24/2sf-4/"><span class="level-item">算法知识4-二叉树知识</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-02-24T01:00:00.000Z">2024-02-24</time></p><p class="title"><a href="/2024/02/24/2sf-5/">算法知识5-递归算法</a></p><p class="categories"><a href="/categories/%E7%AE%97%E6%B3%95/">算法</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2024/02/24/2sf-4/"><img src="/img/2_sf/DM_20240226114224_001.jpg" alt="算法知识4-二叉树知识"></a></figure><div class="media-content"><p class="date"><time dateTime="2024-02-24T00:00:00.000Z">2024-02-24</time></p><p class="title"><a href="/2024/02/24/2sf-4/">算法知识4-二叉树知识</a></p><p class="categories"><a href="/categories/%E7%AE%97%E6%B3%95/">算法</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-02-23T01:03:00.000Z">2024-02-23</time></p><p class="title"><a href="/2024/02/23/2sf-3/">算法知识3-数组知识及部分习题</a></p><p class="categories"><a href="/categories/%E7%AE%97%E6%B3%95/">算法</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-02-23T01:00:00.000Z">2024-02-23</time></p><p class="title"><a href="/2024/02/23/2sf-2/">算法知识2-C++和Java算法常用方法</a></p><p class="categories"><a href="/categories/%E7%AE%97%E6%B3%95/">算法</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2024/02/22/2sf-1/"><img src="/img/2_sf/image-20230928115616576.png" alt="算法知识1-时空复杂度"></a></figure><div class="media-content"><p class="date"><time dateTime="2024-02-22T01:00:00.000Z">2024-02-22</time></p><p class="title"><a href="/2024/02/22/2sf-1/">算法知识1-时空复杂度</a></p><p class="categories"><a href="/categories/%E7%AE%97%E6%B3%95/">算法</a></p></div></article></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"><span class="level-start"><span class="level-item">效果实现</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%AE%97%E6%B3%95/"><span class="level-start"><span class="level-item">算法</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"><span class="tag">二叉树</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%80%92%E5%BD%92/"><span class="tag">递归</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/G.svg" alt="Garrison&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2024 Garrison</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">Garrison's Blog</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Gary2122/"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
