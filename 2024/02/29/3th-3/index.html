@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>three.js-加载glb模型(含踩坑) - Garrison&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Garrison&#039;s Blog"><meta name="msapplication-TileImage" content="/img/gg.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Garrison&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="利用GLTFLoader和DRACOLoader加载glb文件，包含加载时遇到的踩坑问题..."><meta property="og:type" content="blog"><meta property="og:title" content="three.js-加载glb模型(含踩坑)"><meta property="og:url" content="http://example.com/2024/02/29/3th-3/"><meta property="og:site_name" content="Garrison&#039;s Blog"><meta property="og:description" content="利用GLTFLoader和DRACOLoader加载glb文件，包含加载时遇到的踩坑问题..."><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/img/3_th/glb%E5%8A%A0%E8%BD%BD.png"><meta property="article:published_time" content="2024-02-29T01:50:00.000Z"><meta property="article:modified_time" content="2024-03-03T13:58:17.963Z"><meta property="article:author" content="Garrison"><meta property="article:tag" content="three.js"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/img/3_th/glb%E5%8A%A0%E8%BD%BD.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2024/02/29/3th-3/"},"headline":"three.js-加载glb模型(含踩坑)","image":["http://example.com/img/3_th/glb%E5%8A%A0%E8%BD%BD.png"],"datePublished":"2024-02-29T01:50:00.000Z","dateModified":"2024-03-03T13:58:17.963Z","author":{"@type":"Person","name":"Garrison"},"publisher":{"@type":"Organization","name":"Garrison's Blog","logo":{"@type":"ImageObject","url":"http://example.com/img/G.svg"}},"description":"利用GLTFLoader和DRACOLoader加载glb文件，包含加载时遇到的踩坑问题..."}</script><link rel="canonical" href="http://example.com/2024/02/29/3th-3/"><link rel="icon" href="/img/gg.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/monokai.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/G.svg" alt="Garrison&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">档案</a><a class="navbar-item" href="/categories">类别</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">个人简介</a></div><div class="navbar-end"><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/img/3_th/glb%E5%8A%A0%E8%BD%BD.png" alt="three.js-加载glb模型(含踩坑)"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-02-29T01:50:00.000Z" title="2024/2/29 09:50:00">2024-02-29</time>发表</span><span class="level-item"><time dateTime="2024-03-03T13:58:17.963Z" title="2024/3/3 21:58:17">2024-03-03</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/three-js/">three.js</a></span></div></div><h1 class="title is-3 is-size-4-mobile">three.js-加载glb模型(含踩坑)</h1><div class="content"><br>
+
+<blockquote>
+<p>在假期学了 three.js 的教程，但是也只停留在听的层次，没有练习过，听能听懂，但是到实操的时候问题比比皆是，这篇文章是关于如何用 three.js 去加载 glb 模型的，包含找了很久也没解决但是最后成功了的方法</p>
+</blockquote>
+<p>在上一节的 three.js 教程中，学会了怎么搭建一个场景，以及是怎么渲染出来了，再用一句话去概括一下这个过程</p>
+<p>这就好比我们的生活中，我们通过眼睛去看这个世界，这个世界里面有很多东西，这个就是由物体和环境构成的场景，也就是我们说的<strong>scene</strong>，再者，我们通过眼睛去看这个环境的一草一木，一人一物，这个就是对应的<strong>camera</strong>，也就是那个相机，但是我们随着时间的流逝，也就物体在运动，也可能在静止状态，但是我们不能通过这一瞬间知道物体之后的状态，所以渲染器的持续渲染(实时渲染)就很重要了，有了<strong>renderer</strong>我们才能知道我们观察物体的状态及运动。</p>
+<br>
+
+<p>在场景、相机以及渲染器都调试好了之后，我们可以加载我们的模型了，其实加载模型不难，直接用 loader 里面的 load 方法加载不就行了嘛。没错当我在弄得时候也是这么想的，但是在实操的时候我忽略了几个问题：</p>
+<ul>
+<li>模型的路径问题</li>
+<li>模型放在哪个文件里</li>
+</ul>
+<p>这两个问题困扰我很长时间，第二个问题比较好解决。但是第一个问题我找了很多帖子，在我这就是不好用 o(╥﹏╥)o</p>
+<br>
+
+<p>下面开始一步步在加载模型</p>
+<h2 id="1-引用加载器"><a href="#1-引用加载器" class="headerlink" title="1.引用加载器"></a>1.引用加载器</h2><p>这次加载的模型用到这两个模型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">GLTFLoader</span> &#125; <span class="keyword">from</span> <span class="string">&quot;three/examples/jsm/loaders/GLTFLoader&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">DRACOLoader</span> &#125; <span class="keyword">from</span> <span class="string">&quot;three/examples/jsm/loaders/DRACOLoader&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>关于这两个加载器的介绍</p>
+<article class="message is-primary is-medium">
+        <div class="message-header"><p>GLTFLoader</p>
+</div>
+        <div class="message-body">
+            <p>用于载入<em>glTF 2.0</em>资源的加载器</p>
+
+        </div>
+    </article>
+<article class="message is-success is-medium">
+        <div class="message-header"><p>DRACOLoader</p>
+</div>
+        <div class="message-body">
+            <p>DRACOLoader：一个用于加载经过 Draco 压缩的图形库。</p>
+<p><a target="_blank" rel="noopener" href="https://google.github.io/draco/">Draco</a>是一个开源的库，主要用于压缩和解压缩三维模型及点云。 以客户端上解压缩为代价，显著减少压缩的图形。</p>
+
+        </div>
+    </article>
+
+<br>
+
+<h2 id="2-结合使用"><a href="#2-结合使用" class="headerlink" title="2.结合使用"></a>2.结合使用</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> loader = <span class="keyword">new</span> <span class="title class_">GLTFLoader</span>();</span><br><span class="line"><span class="keyword">const</span> dracoLoader = <span class="keyword">new</span> <span class="title class_">DRACOLoader</span>();</span><br><span class="line">dracoLoader.<span class="title function_">setDecoderPath</span>(<span class="string">&quot;/static/draco/&quot;</span>);</span><br><span class="line"><span class="comment">// 使用js方式解压</span></span><br><span class="line">dracoLoader.<span class="title function_">setDecoderConfig</span>(&#123; <span class="attr">type</span>: <span class="string">&quot;js&quot;</span> &#125;);</span><br><span class="line"><span class="comment">// 初始化_initDecoder 解码器</span></span><br><span class="line">dracoLoader.<span class="title function_">preload</span>();</span><br><span class="line"></span><br><span class="line">loader.<span class="title function_">setDRACOLoader</span>(dracoLoader);</span><br></pre></td></tr></table></figure>
+
+<p>在这里就需要进行很多操作了，首先先说下这段代码的意思</p>
+<p>setDecoderPath：设置解压的路径，这里不是模型的路径，而是采用哪种压缩的方法（我的理解）</p>
+<p>然后再进行 <strong>js</strong> 方式解压，并初始化 <strong>Decoder</strong> 解码器，最后将初始化好的 dracoLoader 加载器作为 gltf 加载器，这样能提高浏览器响应</p>
+<p>那么对应的操作是什么？先看我的文件目录</p>
+<p><img src="/2024/02/29/3th-3/image-20240303210015794.png" alt="image-20240303210015794"></p>
+<p>当时我的 glb 文件就是加载不上，所以听从了网上的建议，将对应的 glb 文件放在<strong>static</strong>文件夹中，但是我用的 vue2，所以只能新建一个了，说明我的模型文件为静态文件，不需要进行对应的打包，然后将里面的<strong>gltf 里面的文件和 gltf 整个文件夹</strong>放在 draco 里面，至于怎么在 draco 的文件里面，因为当时我们设置的<strong>DecoderPath</strong>就是在 static 文件下的 draco 文件夹下，我们需要使用到 draco 里面的文件，自然而然就放到 draco 文件夹下。</p>
+<br>
+
+<h2 id="3-加载模型"><a href="#3-加载模型" class="headerlink" title="3.加载模型"></a>3.加载模型</h2><p>当上面都设置好了之后，那就没什么问题了吧？？？</p>
+<p>错错错！精彩才刚刚开始！！！</p>
+<p>因为模型的路径问题，我耗费了整整小一天（也许是我太废物了）</p>
+<br>
+
+<p>步入正题，首先需要确认模型放在哪？</p>
+<p>我们在上面创建了 static 文件夹，再创建<strong>data</strong>文件夹，将我们的 glb 文件放在我们<strong>data</strong>文件夹中</p>
+<p>然后我们为我们 glb 资源文件创建一个对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> carModel = [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">name</span>: <span class="string">&quot;EXT&quot;</span>,</span><br><span class="line">          <span class="attr">path</span>: <span class="string">&quot;/static/data/lynkco09/model/Lynkco09_EXT_d.glb&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">name</span>: <span class="string">&quot;INT&quot;</span>,</span><br><span class="line">          <span class="attr">path</span>: <span class="string">&quot;/static/data/lynkco09/model/Lynkco09_INT_d.glb&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        ...</span><br><span class="line">      ];</span><br></pre></td></tr></table></figure>
+
+<p>这块问题就很多了，我最先开始不知道将 glb 文件放在 static&#x2F;data 文件夹下，走了很多坑，一直在试，主要也很奇怪，我用其他的 glb 文件没有问题，但是就是用这个车模的 glb 文件出了问题，所以一直在试错阶段。第二个问题就是资源文件的前缀，要加上<strong>/static</strong>，我在网上找了很多教程都是不加的，反正也没看到有加的，没加的时候我的资源文件就是不好用的，但是在加了之后，我的 glb 资源文件就可以通过 three.js 渲染出来了，很神奇~</p>
+<br>
+
+<p>写到这，其实问题大差不差就解决好了，就是运用 group 将各个 glb 资源文件通过加载器加载，然后组合成一个 model，组合之后放在 scene 里面就行了。最后的代码是这样的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> model = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Group</span>(); <span class="comment">//声明一个组对象，用来添加加载成功的三维场景</span></span><br><span class="line">carModel.<span class="title function_">forEach</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">  loader.<span class="title function_">load</span>(item.<span class="property">path</span>, <span class="function">(<span class="params">gltf</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(gltf);</span><br><span class="line">    model.<span class="title function_">add</span>(gltf.<span class="property">scene</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">return</span> model;</span><br></pre></td></tr></table></figure>
+
+<p>让我们看一下最后的渲染结果：</p>
+<p><img src="/2024/02/29/3th-3/image-20240303211908013.png" alt="image-20240303211908013"></p>
+<p>至于为什么问题这么多还加载这个模型，一是踩坑有经验，二是这个车模比较帅哈哈</p>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/three-js/">three.js</a></div><div class="bdsharebuttonbox"><a class="bds_more" href="#" data-cmd="more"></a><a class="bds_qzone" href="#" data-cmd="qzone" title="分享到QQ空间"></a><a class="bds_tsina" href="#" data-cmd="tsina" title="分享到新浪微博"></a><a class="bds_tqq" href="#" data-cmd="tqq" title="分享到腾讯微博"></a><a class="bds_renren" href="#" data-cmd="renren" title="分享到人人网"></a><a class="bds_weixin" href="#" data-cmd="weixin" title="分享到微信"></a></div><script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2024/03/02/4sh-2/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">生活小记-开学日</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/02/28/3th-5/"><span class="level-item">three.js-创建渲染器renderer</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-11T02:38:39.000Z">2024-03-11</time></p><p class="title"><a href="/2024/03/11/4sh-4/">生活小记-所想所记3-11</a></p><p class="categories"><a href="/categories/%E7%94%9F%E6%B4%BB%E5%B0%8F%E8%AE%B0/">生活小记</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-06T14:11:39.000Z">2024-03-06</time></p><p class="title"><a href="/2024/03/06/4sh-3/">生活小记-所想所记3-6</a></p><p class="categories"><a href="/categories/%E7%94%9F%E6%B4%BB%E5%B0%8F%E8%AE%B0/">生活小记</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-02T12:20:00.000Z">2024-03-02</time></p><p class="title"><a href="/2024/03/02/4sh-2/">生活小记-开学日</a></p><p class="categories"><a href="/categories/%E7%94%9F%E6%B4%BB%E5%B0%8F%E8%AE%B0/">生活小记</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-02-29T01:50:00.000Z">2024-02-29</time></p><p class="title"><a href="/2024/02/29/3th-3/">three.js-加载glb模型(含踩坑)</a></p><p class="categories"><a href="/categories/three-js/">three.js</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-02-28T02:50:00.000Z">2024-02-28</time></p><p class="title"><a href="/2024/02/28/3th-5/">three.js-创建渲染器renderer</a></p><p class="categories"><a href="/categories/three-js/">three.js</a></p></div></article></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/three-js/"><span class="level-start"><span class="level-item">three.js</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"><span class="level-start"><span class="level-item">效果实现</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%94%9F%E6%B4%BB%E5%B0%8F%E8%AE%B0/"><span class="level-start"><span class="level-item">生活小记</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%AE%97%E6%B3%95/"><span class="level-start"><span class="level-item">算法</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/three-js/"><span class="tag">three.js</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"><span class="tag">二叉树</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%94%9F%E6%B4%BB%E5%B0%8F%E8%AE%B0/"><span class="tag">生活小记</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%80%92%E5%BD%92/"><span class="tag">递归</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/G.svg" alt="Garrison&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2024 Garrison</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">Garrison's Blog</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Gary2122/"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
