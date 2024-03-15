@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>前端-面经学习-HTML - Garrison&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Garrison&#039;s Blog"><meta name="msapplication-TileImage" content="/img/gg.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Garrison&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="HTML部分面试题整理，好多都不知道，唉..."><meta property="og:type" content="blog"><meta property="og:title" content="前端-面经学习-HTML"><meta property="og:url" content="http://example.com/2024/03/15/1qd-2/"><meta property="og:site_name" content="Garrison&#039;s Blog"><meta property="og:description" content="HTML部分面试题整理，好多都不知道，唉..."><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/1qd-2/v2-b0b4e65944f45abea083de0e8087d69c_720w.webp"><meta property="article:published_time" content="2024-03-15T10:29:26.000Z"><meta property="article:modified_time" content="2024-03-15T10:35:30.854Z"><meta property="article:author" content="Garrison"><meta property="article:tag" content="面经"><meta property="article:tag" content="HTML"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/1qd-2/v2-b0b4e65944f45abea083de0e8087d69c_720w.webp"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2024/03/15/1qd-2/"},"headline":"前端-面经学习-HTML","image":["http://example.com/1qd-2/v2-b0b4e65944f45abea083de0e8087d69c_720w.webp"],"datePublished":"2024-03-15T10:29:26.000Z","dateModified":"2024-03-15T10:35:30.854Z","author":{"@type":"Person","name":"Garrison"},"publisher":{"@type":"Organization","name":"Garrison's Blog","logo":{"@type":"ImageObject","url":"http://example.com/img/G.svg"}},"description":"HTML部分面试题整理，好多都不知道，唉..."}</script><link rel="canonical" href="http://example.com/2024/03/15/1qd-2/"><link rel="icon" href="/img/gg.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/G.svg" alt="Garrison&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">档案</a><a class="navbar-item" href="/categories">类别</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">个人简介</a></div><div class="navbar-end"><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-03-15T10:29:26.000Z" title="2024/3/15 18:29:26">2024-03-15</time>发表</span><span class="level-item"><time dateTime="2024-03-15T10:35:30.854Z" title="2024/3/15 18:35:30">2024-03-15</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a></span></div></div><h1 class="title is-3 is-size-4-mobile">前端-面经学习-HTML</h1><div class="content"><blockquote>
+<p>HTML（Hypertext Markup Language，又叫‘超文本标记语言’）是一种用于创建 Web 页面的标记语言，它描述了网页的结构和内容。</p>
+</blockquote>
+<h2 id="1，html-标签的类型（head，-body，！Doctype）-他们的作用是什么"><a href="#1，html-标签的类型（head，-body，！Doctype）-他们的作用是什么" class="headerlink" title="1，html 标签的类型（head， body，！Doctype） 他们的作用是什么"></a>1，html 标签的类型（head， body，！Doctype） 他们的作用是什么</h2><p>head：</p>
+<ul>
+<li>可以说是所有元素容纳的一个容器，这部分元素是不会显示给使用者或者是读者的</li>
+<li>该标签下所包含的部分可以加入的标签有<titile>、<base>、<link>、<meta>、<style>、<script></li>
+</ul>
+<p>body：</p>
+<ul>
+<li>用于定义文档的主体，包含了文档的所有内容</li>
+<li>该标签支持 HTML 的全局属性和事件属性</li>
+</ul>
+<p>!DOCTYPE：</p>
+<ul>
+<li><p>指示 web 浏览器关于页面使用哪个 HTML 版本进行编写的指令。意在告诉浏览器使用怎么样的标准</p>
+<br/></li>
+</ul>
+<h2 id="2，H5-新特性"><a href="#2，H5-新特性" class="headerlink" title="2，H5 新特性"></a>2，H5 新特性</h2><p>新增选择器：document.querySelector、decument.querySelectorAll</p>
+<blockquote>
+<p>querySelector() 方法返回文档中匹配指定 CSS 选择器的一个元素。</p>
+<p><strong>注意：</strong> querySelector() 方法仅仅返回匹配指定选择器的第一个元素。如果你需要返回所有的元素，请使用 querySelectorAll() 方法替代。</p>
+</blockquote>
+<p>拖拽释放(drag and drop)API</p>
+<blockquote>
+<p>实例代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;!<span class="variable constant_">DOCTYPE</span> html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"> <span class="tag">&lt;<span class="name">title</span>&gt;</span>拖放示例<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"> <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">     <span class="selector-class">.dragbox</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">         <span class="attribute">width</span>: <span class="number">100px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">         <span class="attribute">height</span>: <span class="number">100px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">         <span class="attribute">background-color</span>: <span class="number">#ccc</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">         <span class="attribute">margin</span>: <span class="number">10px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">         <span class="attribute">padding</span>: <span class="number">10px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">         <span class="attribute">text-align</span>: center;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">         <span class="attribute">cursor</span>: move;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">     &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">     <span class="selector-class">.dropbox</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">         <span class="attribute">width</span>: <span class="number">200px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">         <span class="attribute">height</span>: <span class="number">200px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">         <span class="attribute">background-color</span>: <span class="number">#f0f0f0</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">         <span class="attribute">margin</span>: <span class="number">10px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">         <span class="attribute">padding</span>: <span class="number">10px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">         <span class="attribute">text-align</span>: center;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">     &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"> </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;dragbox&quot;</span> <span class="attr">draggable</span>=<span class="string">&quot;true&quot;</span> <span class="attr">ondragstart</span>=<span class="string">&quot;drag(event)&quot;</span>&gt;</span>这是个可拖动的元素<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;dropbox&quot;</span> <span class="attr">ondragover</span>=<span class="string">&quot;allowDrop(event)&quot;</span> <span class="attr">ondrop</span>=<span class="string">&quot;drop(event)&quot;</span>&gt;</span>将拖动的元素释放到此处<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"> <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">     <span class="keyword">function</span> <span class="title function_">drag</span>(<span class="params">event</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">         <span class="comment">// 设置拖动数据</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">         event.<span class="property">dataTransfer</span>.<span class="title function_">setData</span>(<span class="string">&quot;text/plain&quot;</span>, event.<span class="property">target</span>.<span class="property">id</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">     &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">     <span class="keyword">function</span> <span class="title function_">allowDrop</span>(<span class="params">event</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">         <span class="comment">// 必须阻止默认的拖放行为，才能实现拖放功能</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">         event.<span class="title function_">preventDefault</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">     &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">     <span class="keyword">function</span> <span class="title function_">drop</span>(<span class="params">event</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">         event.<span class="title function_">preventDefault</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">         <span class="comment">// 获取拖动的数据</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">         <span class="keyword">var</span> data = event.<span class="property">dataTransfer</span>.<span class="title function_">getData</span>(<span class="string">&quot;text/plain&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">         <span class="comment">// 将拖动的元素添加到释放的区域中</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">         event.<span class="property">target</span>.<span class="title function_">appendChild</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(data));</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">     &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>媒体播放的 vedio 和 audio</p>
+<p>本地储存 localStorage 和 sessionStorage</p>
+<p>离线应用 manifest</p>
+<blockquote>
+<p>带有缓存 manifest 的 HTML 文档（用于离线浏览）：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">manifest</span>=<span class="string">&quot;demo.appcache&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>文档标题<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    文档内容......</span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>桌面通知 Notifications</p>
+<blockquote>
+<p>通过 Web Notifications（桌面通知系统），网站可以在用户桌面弹出一条通知，无论用户是否浏览当前网页，甚至最小化了浏览器，通知均可到达用户桌面。</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1140216">https://cloud.tencent.com/developer/article/1140216</a></p>
+</blockquote>
+<p>语意化标签 article、footer、header、nav、section</p>
+<p>增强表单控件 calendar、date、time、email、url、search</p>
+<p>地理位置 Geolocation</p>
+<blockquote>
+<p><strong><code>Geolocation</code></strong> 接口是一个用来获取设备地理位置的可编程的对象，它可以让 Web 内容访问到设备的地理位置，这将允许网站或应用基于用户的地理位置提供定制的信息。</p>
+<p>带有此接口的对象可以用由 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator"><code>Navigator</code></a> 实现的属性 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/geolocation"><code>NavigatorGeolocation.geolocation</code></a> 来获得。</p>
+</blockquote>
+<p>多任务 webworker</p>
+<p>全双工通信协议 websocket</p>
+<p>历史管理 history</p>
+<p>跨域资源共享(CORS) Access-Control-Allow-Origin</p>
+<p>页面可见性改变事件 visibilitychange</p>
+<p>跨窗口通信 PostMessage</p>
+<p>Form Data 对象</p>
+<p>绘画 canvas</p>
+<br/>
+
+<p>H5 移除的元素：</p>
+<ul>
+<li>纯表现的元素：basefont、big、center、font、s、strike、tt、u</li>
+<li>对可用性产生负面影响的元素：frame、frameset、noframes</li>
+</ul>
+<br/>
+
+<h2 id="3、伪类和伪元素"><a href="#3、伪类和伪元素" class="headerlink" title="3、伪类和伪元素"></a>3、伪类和伪元素</h2><p>伪类：以冒号(:)开头，用于选择处于特定状态的元素。用在已有元素处于某种状态时为其添加对应的样式，这种状态根据用户行为而动态变化</p>
+<blockquote>
+<p>当用户悬停在某个元素时，可以通过:hover 来描述这个元素的状态，虽然它和一般的 CSS 都可以为元素添加样式，但是它只有处于在 DOM 树无法描述的状态下才能为元素添加样式，所以叫伪类。</p>
+</blockquote>
+<p>伪元素：以双冒号(::)开头，用于在文档中插入虚构的元素。用于创建一些不在 DOM 树中的元素，并为其添加样式</p>
+<blockquote>
+<p>我们可以通过:before 来为一个元素之前添加一些文本，并为这些文本添加样式，虽然用户可以看见这些文本但是实在不在 DOM 文档中。</p>
+</blockquote>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7136087057542086693">https://juejin.cn/post/7136087057542086693</a> (很全)</p>
+<br/>
+
+<h2 id="4、HTML-语义化"><a href="#4、HTML-语义化" class="headerlink" title="4、HTML 语义化"></a>4、HTML 语义化</h2><p>什么是语义化？</p>
+<p>​ 语义化就是文本内容的结构化，选择适合的标签，方便开发者的阅读，方便代码的维护，也能让浏览器更好解析，总结一句话也是用正确的标签做正确的事，方便代码开发维护和浏览器解析</p>
+<p>如下图，这个页面结构中摒弃了所有 div 元素，取而代之的是<strong>HTML5 语义化标签</strong></p>
+<p><img src="/./1qd-2/v2-b0b4e65944f45abea083de0e8087d69c_720w.webp" alt="v2-b0b4e65944f45abea083de0e8087d69c_720w"></p>
+<br/>
+
+<p><strong>HTML5 语义化标签</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;header&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>定义文章的介绍信息：标题，logo，slogan；包裹目录部分，搜索框，一个 nav 或者任何相关的 logo；</li>
+<li>一个页面中<header>的个数没有限制，可以为每个内容块添加一个 header；</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;nav&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>定义文章导航栏，链接等;</li>
+<li>nav 一般和 u、li 配合做导航栏；</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;main&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>定义文章的主要内容</li>
+<li>main 标签在一份文档中是唯一的，其后代元素常常包括<code>&lt;article&gt;</code>；</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;article&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>定义文档中可以脱离其他部分，一份独立的内容，通常带有标题，当 article 内嵌 article 时，里外层的内容应该是相关的，比如一篇微博和它的评论；</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;section&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>与 article 的差别在于，它是整体的一部分，或者是文章的一节，一般来说 section 也会带有标题；</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;aside&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>侧边栏（与 article 并列存在）或者嵌入内容（在 article 内），通常认为是独立拆分出来而不受整体影响的一部分，作为主要内容的附属信息，如索引，词条列表，或者页面及站点的附属信息，如广告，作者资料介绍等</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;footer&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>页脚，通常包含作者、版权信息或者相关链接等；</li>
+</ul>
+<br/>
+
+<p>语义化的优点？</p>
+<ul>
+<li>有助于 SEO<ul>
+<li><strong>HTML</strong>语义化可以帮助搜索引擎更好地理解页面内容，从而提高页面排名，增加流量。</li>
+</ul>
+</li>
+<li>提高可访问性<ul>
+<li><strong>HTML</strong> 语义化可以帮助屏幕阅读器和其他辅助技术更好地理解页面内容，从而提高可访问性。</li>
+</ul>
+</li>
+<li>提高可读性</li>
+<li>提高可维护性</li>
+</ul>
+<br/>
+
+<h2 id="5、audio-常用-API"><a href="#5、audio-常用-API" class="headerlink" title="5、audio 常用 API"></a>5、audio 常用 API</h2><table>
+<thead>
+<tr>
+<th><strong>属性</strong></th>
+<th><strong>属性值</strong></th>
+<th><strong>注释</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>src</td>
+<td>url</td>
+<td>播放的音乐的 url 地址（火狐只支持 ogg 的音乐，而 IE9 只支持 MP3 格式的音乐。chrome 貌似全支持）</td>
+</tr>
+<tr>
+<td>preload</td>
+<td>preload</td>
+<td>预加载（在页面被加载时进行加载或者说缓冲音频），如果使用了 autoplay 的话那么该属性失效。</td>
+</tr>
+<tr>
+<td>loop</td>
+<td>loop</td>
+<td>循环播放</td>
+</tr>
+<tr>
+<td>controls</td>
+<td>controls</td>
+<td>是否显示默认控制条（控制按钮）</td>
+</tr>
+<tr>
+<td>autoplay</td>
+<td>autoplay</td>
+<td>自动播放</td>
+</tr>
+</tbody></table>
+<br/>
+
+<p>audio 的属性</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>duration</td>
+<td>获取媒体文件的总时长，以 s 为单位，如果无法获取，返回 NaN</td>
+</tr>
+<tr>
+<td>paused</td>
+<td>如果媒体文件被暂停，那么 paused 属性返回 true，反之则返回 false</td>
+</tr>
+<tr>
+<td>ended</td>
+<td>如果媒体文件播放完毕返回 true</td>
+</tr>
+<tr>
+<td>muted</td>
+<td>用来获取或设置静音状态。值为 boolean</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>控制音量的属性值为 0-1;0 为音量最小，1 为音量最大</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>返回起始播放时间</td>
+</tr>
+<tr>
+<td>error</td>
+<td>返回错误代码，为 uull 的时候为正常。否则可以通过 Music.error.code 来获取具体的错误代码： 1.用户终止 2.网络错误 3.解码错误 4.URL 无效</td>
+</tr>
+<tr>
+<td>currentTime</td>
+<td>用来获取或控制当前播放的时间，单位为 s。</td>
+</tr>
+<tr>
+<td>currentSrc</td>
+<td>以字符串形式返回正在播放或已加载的文件</td>
+</tr>
+</tbody></table>
+<br/>
+
+<p>常用的控制用的函数：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>load()</td>
+<td>加载音频、视频软件</td>
+</tr>
+<tr>
+<td>play()</td>
+<td>加载并播放音频、视频文件或重新播放暂停的的音频、视频</td>
+</tr>
+<tr>
+<td>pause()</td>
+<td>暂停出于播放状态的音频、视频文件</td>
+</tr>
+<tr>
+<td>canPlayType(obj)</td>
+<td>测试是否支持给定的 Mini 类型的文件</td>
+</tr>
+</tbody></table>
+<br/>
+
+<table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>事件作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>loadstart</td>
+<td>客户端开始请求数据</td>
+</tr>
+<tr>
+<td>progress</td>
+<td>客户端正在请求数据（或者说正在缓冲）</td>
+</tr>
+<tr>
+<td>play</td>
+<td>play()和 autoplay 播放时</td>
+</tr>
+<tr>
+<td>pause</td>
+<td>pause()方法促发时</td>
+</tr>
+<tr>
+<td>ended</td>
+<td>当前播放结束</td>
+</tr>
+<tr>
+<td>timeupdate</td>
+<td>当前播放时间发生改变的时候。播放中常用的时间处理哦</td>
+</tr>
+<tr>
+<td>canplaythrough</td>
+<td>歌曲已经载入完全完成</td>
+</tr>
+<tr>
+<td>canplay</td>
+<td>缓冲至目前可播放状态。</td>
+</tr>
+</tbody></table>
+<br/>
+健身去喽~
+</style></titile></li></ul></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E9%9D%A2%E7%BB%8F/">面经</a><a class="link-muted mr-2" rel="tag" href="/tags/HTML/">HTML</a></div><div class="bdsharebuttonbox"><a class="bds_more" href="#" data-cmd="more"></a><a class="bds_qzone" href="#" data-cmd="qzone" title="分享到QQ空间"></a><a class="bds_tsina" href="#" data-cmd="tsina" title="分享到新浪微博"></a><a class="bds_tqq" href="#" data-cmd="tqq" title="分享到腾讯微博"></a><a class="bds_renren" href="#" data-cmd="renren" title="分享到人人网"></a><a class="bds_weixin" href="#" data-cmd="weixin" title="分享到微信"></a></div><script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/03/15/4sh-5/"><span class="level-item">生活小记-所想所记3-15</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-15T10:29:26.000Z">2024-03-15</time></p><p class="title"><a href="/2024/03/15/1qd-2/">前端-面经学习-HTML</a></p><p class="categories"><a href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-15T02:00:03.000Z">2024-03-15</time></p><p class="title"><a href="/2024/03/15/4sh-5/">生活小记-所想所记3-15</a></p><p class="categories"><a href="/categories/%E7%94%9F%E6%B4%BB%E5%B0%8F%E8%AE%B0/">生活小记</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-14T06:58:44.000Z">2024-03-14</time></p><p class="title"><a href="/2024/03/14/2sf-8/">算法知识5-算法超全模板-字符串</a></p><p class="categories"><a href="/categories/%E7%AE%97%E6%B3%95/">算法</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-14T06:38:44.000Z">2024-03-14</time></p><p class="title"><a href="/2024/03/14/2sf-7/">算法知识5-算法超全模板-数组篇</a></p><p class="categories"><a href="/categories/%E7%AE%97%E6%B3%95/">算法</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-12T11:39:52.000Z">2024-03-12</time></p><p class="title"><a href="/2024/03/12/1qd-1/">前端-CSS实现滚动高度自动变小的粘滞效果</a></p><p class="categories"><a href="/categories/%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/">效果实现</a></p></div></article></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/three-js/"><span class="level-start"><span class="level-item">three.js</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"><span class="level-start"><span class="level-item">效果实现</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%94%9F%E6%B4%BB%E5%B0%8F%E8%AE%B0/"><span class="level-start"><span class="level-item">生活小记</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%AE%97%E6%B3%95/"><span class="level-start"><span class="level-item">算法</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li><li><a class="level is-mobile" href="/categories/%E9%9D%A2%E7%BB%8F/"><span class="level-start"><span class="level-item">面经</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/HTML/"><span class="tag">HTML</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/three-js/"><span class="tag">three.js</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"><span class="tag">二叉树</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%95%B0%E7%BB%84/"><span class="tag">数组</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%A8%A1%E6%9D%BF/"><span class="tag">模板</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%94%9F%E6%B4%BB%E5%B0%8F%E8%AE%B0/"><span class="tag">生活小记</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">8</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%80%92%E5%BD%92/"><span class="tag">递归</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9D%A2%E7%BB%8F/"><span class="tag">面经</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/G.svg" alt="Garrison&#039;s Blog" height="28"></a><p class="is-size-7"><span>&copy; 2024 Garrison</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">Garrison's Blog</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Gary2122/"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
